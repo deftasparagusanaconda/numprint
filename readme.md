@@ -84,6 +84,10 @@ https://www.hsluv.org/
 i hope that was explanatory... i hope..
 
 in general, a number like `123,450` can be written as `000M123K450.000m000n000` and we simply take n characters from the first significant number (or the SI prefix next to it)
+</details><details><summary>continued_fraction</summary>
+
+https://en.wikipedia.org/wiki/Continued_fraction
+
 </details>
 
 mathy nerd~  
