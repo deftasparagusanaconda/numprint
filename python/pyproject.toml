@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=75.8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "numprint"
+version = "0.1.0"
+description = "library to represent numbers in different ways"
+readme = "readme.md"
+requires-python = ">=3.13.2"
+license = "GPL-3.0-or-later"
+authors = [{name="deftasparagusanaconda", email="deftasparagusanaconda@gmail.com"}]
+keywords = ["number", "representation"]
+classifiers = ["Programming Language :: Python :: 3.13"]
+
+[project.urls]
+Homepage = "https://github.com/deftasparagusanaconda/numprint"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["numprint"]

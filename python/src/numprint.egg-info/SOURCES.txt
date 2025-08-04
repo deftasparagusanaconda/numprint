@@ -1,0 +1,8 @@
+pyproject.toml
+src/numprint/__init__.py
+src/numprint/fixed_width.py
+src/numprint/miscellaneous.py
+src/numprint.egg-info/PKG-INFO
+src/numprint.egg-info/SOURCES.txt
+src/numprint.egg-info/dependency_links.txt
+src/numprint.egg-info/top_level.txt

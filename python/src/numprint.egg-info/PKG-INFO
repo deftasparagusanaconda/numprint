@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: numprint
+Version: 0.1.0
+Summary: library to represent numbers in different ways
+Author-email: deftasparagusanaconda <deftasparagusanaconda@gmail.com>
+License-Expression: GPL-3.0-or-later
+Project-URL: Homepage, https://github.com/deftasparagusanaconda/numprint
+Keywords: number,representation
+Classifier: Programming Language :: Python :: 3.13
+Requires-Python: >=3.13.2
+Description-Content-Type: text/markdown

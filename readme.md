@@ -57,22 +57,10 @@ r = ronto  (10^-27) | R ronna  (10^27)
 q = quecto (10^-30) | Q quetta (10^30)
 ```
 
- fixed_width tries to show the most amount of information in a fixed amount of characters without resorting to alternate bases. it can also represent IEEE floating point numbers like `+inf` `-inf` `nan`, and signed zeroes `+0.0` `-0.0`
+fixed_width tries to show the most amount of information in a fixed amount of characters without resorting to alternate bases. it can also represent IEEE floating point numbers like `+inf` `-inf` `nan`, and signed zeroes `+0.0` `-0.0`
   
 by default, it prints numbers using a metric prefix as an infix to encode both the decimal point and the exponent. if that is not enough, it can encode numerals to the mantissa and alphabets to the exponent, with the orders of magnitude between alphabets being the number of characters. 
-```python
-def fixed_width(
-    ascii:bool = False, # if True, convert μ to u
-    chars:int  = 4    , # number of characters to print
-    sign :bool = True ) # print signage of number. setting False disallows negative input
 
-    if sign is True:
-        digits = chars - 2 # number of significant digits
-    else:
-        digits = chars - 1
-
-    raise NotImplementedError
-```
 for predictability, representing numbers larger than `+99Q` as `+Qk1` or `+QQ1` or `+QQQ` will not be implemented.
 
 SI prefix colours are calculated according to hpluv(x,100,76)
@@ -91,4 +79,4 @@ https://en.wikipedia.org/wiki/Continued_fraction
 </details>
 
 mathy nerd~  
-\- [daa][https://github.com/deftasparagusanaconda]
+\- [daa](https://github.com/deftasparagusanaconda)
