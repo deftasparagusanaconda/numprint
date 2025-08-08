@@ -1,7 +1,7 @@
 Metadata-Version: 2.4
-Name: numprint
+Name: numrepr
 Version: 0.1.0
-Summary: library to represent numbers in different ways
+Summary: library to represent numbers in many ways
 Author-email: deftasparagusanaconda <deftasparagusanaconda@gmail.com>
 License-Expression: GPL-3.0-or-later
 Project-URL: Homepage, https://github.com/deftasparagusanaconda/numprint

@@ -3,9 +3,9 @@ requires = ["setuptools>=75.8"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "numprint"
+name = "numrepr"
 version = "0.1.0"
-description = "library to represent numbers in different ways"
+description = "library to represent numbers in many ways"
 readme = "readme.md"
 requires-python = ">=3.13.2"
 license = "GPL-3.0-or-later"

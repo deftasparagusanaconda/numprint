@@ -1,0 +1,109 @@
+create:
+fixed_width_int # integer
+fixed_width_sci # scientific
+fixed_width_eng # engineering
+
+and give them options to fill spaces with zeroes. off by default because its hard to read. they will all allow width>=0 but not width<0. do not remove components according to width. disallow certain combinations.
+
+fixed_width_int(
+	num,
+	width:int = defaults.width,        # 4
+	sign:bool = defaults.sign,         # True
+	char_pos:str = defaults.char_pos,  # '+'
+	char_neg:str = defaults.char_neg,  # '-'
+	rounding:func = defaults.rounding  # half_to_even
+	) -> str:
+	if width == 0:
+		return str()
+	
+	from math import isint, isnan
+
+	if isinf(num):
+		if width == 1:
+			return char_inf
+#		elif width < 2:
+#			return (char_pos if number<0 else char_neg)+char_inf
+		else:
+				
+	elif isnan(num):
+		return char_nan
+	
+	if width == 1 and sign:
+		return '-' if number < 0 else '+'
+	
+	rnd = rounding(num)
+	char_sign = char_neg if rnd < 0 else char_pos
+	str_abs = str(rnd)[1:] if rnd<0 else str(rnd)
+
+	if abs(rnd)>10**(width-sign)-1:
+		return (char_sign+char_inf).ljust(width, pad_inf))
+	
+	if sign:
+		return char_sign+str_abs.rjust(width-1, pad_num)
+	else:
+		return str_abs.rjust(width, pad_num)
+	
+
+fixed_width_sci: sign always displayed. always displays exponent (with sign). allow three parameters: width, sig_digits, exp_digits. allow disabling char_dot.
+fixed_width_eng: always stick to exponent multiples of 3. decimal dot does not move. no of leading digits varies accordingly. sign always displayed. allow modifying the fill space (default is whitespace).
+
+5: +1e+1
+6: +12e+1
+7: +1.2e+1
+8: +
+
+--------------------------------------------------------------------------------
+
+00
+01 1
+02 +1
+03 +12
+04 +123
+05 +1234       +1e+1
+06 +12345      +12e+1
+07 +123456     +123e+1
+08 +1234567    +123e+12
+09 +12345678   +1234e+12
+10 +123456789
+11 +1234567890
+12 +12345678901
+13 +123456789012
+14 +1234567890123
+15 +12345678901234
+
+
+at 008 bits, 004:04 (ratio 01      ) 
+at 016 bits, 011:05 (ratio 02.2    )
+at 032 bits, 024:08 (ratio 03      )
+at 064 bits, 053:11 (ratio 04..81  )
+at 128 bits, 113:15 (ratio 07.5.3  )
+at 256 bits, 237:19 (ratio 12.47...)
+
+A(3, 01.0)   
+B(4, 02.2)
+C(5, 03.0)   
+D(6, 04.8)
+E(7, 07.5)
+F(8, 12.5)
+
+G: A->B 1.2 ratio per log2(bits)
+H: B->C 0.8 ratio per log2(bits)
+I: C->D 1.8 ratio per log2(bits)
+J: D->E 2.7 ratio per log2(bits)
+K: E->F 5.0 ratio per log2(bits)
+
+G->H: -0.4
+H->I: +1.0
+I->J: +0.9
+J->K: +2.3
+
+so the approximation is not as a polynomial but as an exponential since derivatives keep having non-constant derivatives.
+
+at 02.4 decs, 01.2:1.2 05-char +1e+1
+at 04.8 decs, 03.3:1.5 08-char +123e+12
+at 09.6 decs, 07.2:2.4 13-char +1234567e+123
+at 19.3 decs, 16.0:3.3 22-char +1234567890123456e+123
+at 38.5 decs, 34.0:4.5 42-char +1234567890123456789012345678901234e+12345
+at 77.1 decs, 71.3:5.7 80-char +123457890123457890123456789012345678901234567890123456789012345678901e+123456
+
+
